@@ -1,0 +1,25 @@
+<h1>공지사항</h1>
+<%=form_tag '/annwrt', method: 'post', multipart: true do %>
+    <textarea name="acon"></textarea>
+    <%= file_field_tag 'aimage' %>
+    <input type="submit">
+<% end %>
+<ul>
+    <% @ablogs.each do |ab| %>
+    <li>
+        <%=ab.content%>
+        <img src="<%=ab.image.url%>" width="200px">
+        <%=form_tag '/comment', method: 'post' do %>
+        <input type="hidden" name="annct_id" value=" <%=ab.id%>">
+        <input type="text" name="comment">
+        <input type="submit">
+        <% end %>
+            <ol>
+                <% ab.comments.each do |ca| %>
+                    <li><%=ca.msg%></li>
+                <% end %>
+            </ol>
+    </li>
+    <% end %>
+</ul>
+    

@@ -1,0 +1,28 @@
+          <div class="main-content">
+		     <!--/gallery-->
+			 <div class="gallery">
+					<h3 class="tittle">Event Gallery</h3>
+					<a href="/prup">upload</a>
+					<div class="gallery-bottom grid">
+<% @agals.each do |ag| %>
+						<div class="col-md-3 g-left">
+								<a href="<%=ag.image.url%>" rel="title" class="b-link-stripe b-animate-go  thickbox">
+									<figure class="effect-oscar">
+										<img src="<%=ag.image.url%>" alt=""/>
+										<figcaption>
+											<h4><%=ag.title%></h4>
+											<p>by <%=ag.user.username%></p>
+											<p><%=ag.content%></p>
+										</figcaption>			
+									</figure>
+								</a>
+							</div>
+<% end %>
+						<div class="clearfix"> </div>
+						</div>
+					</div>
+			</div>
+
+	         <!--//gallery-->
+	</div>
+</div>

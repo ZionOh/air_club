@@ -1,0 +1,28 @@
+          <div class="main-content">
+		     <!--/gallery-->
+			 <div class="gallery">
+					<h3 class="tittle">Game Gallery</h3>
+					<a href="/gaup">upload</a>
+					<div class="gallery-bottom grid">
+<% @ggals.each do |gg| %>
+						<div class="col-md-3 g-left">
+								<a href="<%=gg.image.url%>" rel="title" class="b-link-stripe b-animate-go  thickbox">
+									<figure class="effect-oscar">
+										<img src="<%=gg.image.url%>" alt=""/>
+										<figcaption>
+											<h4><%=gg.title%></h4>
+											<p>by <%=gg.user.username%></p>
+											<p><%=gg.content%></p>
+										</figcaption>			
+									</figure>
+								</a>
+							</div>
+<% end %>
+						<div class="clearfix"> </div>
+						</div>
+					</div>
+			</div>
+
+	         <!--//gallery-->
+	</div>
+</div>

@@ -1,4 +1,49 @@
 Rails.application.routes.draw do
+  devise_for :users do
+  delete '/users/sign_out' => 'devise/sessions#destroy'
+  end
+  resources :videos
+  root 'main#index'
+  get '/abouts' =>"main#about"
+  get '/contacts' =>"main#contacts"
+  
+  get '/yboard' =>"board#yboard"
+  post '/ywrite' =>"board#ywrite"
+  get'/ysingle/:id' =>"board#ysingle",  as: "ysingle"
+  get '/board/ydel/:id' =>"board#ydel", as: "ydel"
+  get '/board/yedit/:id' =>"board#yedit", as: "yedit"
+  post '/yupdate' =>"board#yupdate"
+
+  get '/oboard' =>"board#oboard"
+  post '/owrite' =>"board#owrite"
+  get'/osingle/:id' =>"board#osingle",  as: "osingle"
+  get '/board/odel/:id' =>"board#odel", as: "odel"
+  get '/board/oedit/:id' =>"board#oedit", as: "oedit"
+  post '/oupdate' =>"board#oupdate"
+
+
+  get '/announce' =>"board#announce"
+  post  '/annwrt' =>"board#annwrt"
+
+
+  get '/board_total' =>"board#total"
+  post '/comment' =>"board#comment"
+  
+  get'/btest' =>"board#btest"
+  get'/profile/:id' =>"board#profile", as: "profile"
+  
+  get '/ggallery' =>"gallery#games"
+  get '/gaup' =>"gallery#gaup"
+  post '/gcre' =>"gallery#gcre"
+  get '/egallery' =>"gallery#event"
+  get '/evup' =>"gallery#evup"
+  post '/ecre' =>"gallery#ecre"
+  get '/agallery' =>"gallery#aprivate"
+  get '/prup' =>"gallery#prup"
+  post '/acre' =>"gallery#acre"
+  get '/tgallery' =>"gallery#total"
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

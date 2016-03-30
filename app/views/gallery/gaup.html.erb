@@ -1,0 +1,13 @@
+<h1>Upload your image of Games</h1>
+<div class="main-content" style="margin-bottom:-50px">
+<div class="media response-info" style="margin-top:-50px">
+    <div class="media-left response-text-left">
+<%=form_tag '/gcre', method: 'post', multipart: true do %>
+    <input type="text" name="gtit" placeholder="제목">
+    <textarea name="gcon" placeholder="부연 설명"></textarea>
+    <%= file_field_tag 'gimage' %><br>
+    <input type="submit" value="submit">
+<% end %>
+    </div>
+</div>
+</div>

@@ -1,0 +1,15 @@
+<h1>Edit your post</h1>
+
+<%=form_tag '/yupdate', method: 'post', multipart: true do %>
+    <input type="hidden" name="id" value="<%=@ye.id%>">
+    <textarea name="ycon"><%=@ye.content%></textarea>
+    <% if @ye.image? %>
+      <div width="100px"><%= image_tag @ye.image.url , height: '132', width: '132' %></div><br/>
+    <% end %>
+    <%= file_field_tag 'yimage'%><br>
+    <% if @ye.url? %>
+    <textarea width="100px"><%=@ye.url%></textarea>
+    <% end %>
+    <%= text_field_tag 'yvideo', nil, :placeholder => 'Copy the URL link here' %>
+    <input type="submit">
+<% end %>

@@ -1,0 +1,41 @@
+<h1>YB 방</h1>
+<%=form_tag '/ywrite', method: 'post', multipart: true do %>
+    
+    <textarea name="ycon"></textarea>
+    <%= file_field_tag 'yimage' %>
+    <%= text_field_tag 'yvideo', nil, :placeholder => 'Copy the URL link here' %>
+    <input type="submit">
+<% end %>
+<div>
+    <% @yblogs.each do |y| %>
+    <div>
+    <% if y.user.id == current_user.id %>
+    <%= link_to ydel_path(y) do %> Del <% end %>
+    <%= link_to yedit_path(y) do %> Edit <% end %>
+    <% else %>
+    <% end %>
+            <%= link_to ysingle_path(y) do %> <img src="<%=y.user.image%>"> <% end %>
+    <%= link_to profile_path(y.user_id) do %> <%=y.user.username%> <% end %>    
+    <%= link_to ysingle_path(y) do %> : <%=y.content%> <% end %>
+    <% if y.url? %>
+        <div><iframe src="<%=y.url.gsub('watch?v=', 'embed/') %>"></iframe></div>
+    <% else %>
+    <% end %>
+    <% if y.image? %>
+        <div><img src="<%=y.image.url%>" width="200px"></div></a>
+    <% else %>
+    <% end %>
+        <%=form_tag '/comment', method: 'post' do %>
+        <input type="hidden" name="yblog_id" value=" <%=y.id%>">
+        <input type="text" name="comment">
+        <input type="submit">
+        <% end %>
+            <div>
+                <% y.comments.each do |cy| %>
+                    <p><%=cy.user.username%> : <%=cy.msg%></p>
+                <% end %>
+            <div>
+    </div>
+    <% end %>
+</div>
+    

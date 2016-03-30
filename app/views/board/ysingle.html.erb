@@ -1,0 +1,66 @@
+        <!--/start-main-->
+          <div class="main-content">
+		      <!--/soccer-inner-->
+	                 <div class="soccer-inner">
+					  <!--/soccer-left-part-->
+					  <div class="col-md-8 soccer-left-part  blog">
+					    <!--/about-->
+						<div class="blogs">
+						    <h3 class="tittle"><%=@ysingle.user.username%>'s Post</h3>
+					        <div class="blog-grid">
+						    <% if @ysingle.image? %>
+							    <img src="<%=@ysingle.image.url%>" class="img-responsive" alt="" />
+						    <% else %>
+						    <% end %>
+						    <% if @ysingle.url? %>
+					        <iframe src="<%=@ysingle.url.gsub('watch?v=', 'embed/') %>" width="100%" height="500"></iframe>
+						    <% else %>
+						    <% end %>
+							</div>
+							 <div class="single-bottom">
+							 <p><%=@ysingle.content%></p>
+					     <% if @ysingle.user.id == current_user.id %>
+						    <%= link_to ydel_path(@ysingle) do %> Del <% end %>
+						    <%= link_to yedit_path(@ysingle) do %> Edit <% end %>
+						 <% else %>
+					     <% end %>
+
+
+					    </div>
+						<div class="response">
+               <% @ysingle.comments.each do |cy| %>
+					<div class="media response-info">
+						<div class="media-left response-text-left">
+							<%= link_to profile_path(cy.user.id) do %>
+								<div>
+								<img class="media-object" src="<%=cy.user.image.url%>" alt="" width="50px" style="float:left;"/>
+								<h5 style="float:left;"> &nbsp; <%=cy.user.username%></h5>
+								</div>
+							<% end %>
+						</div>
+						<div class="media-body response-text-right">
+							<p><%=cy.msg%> (<%=cy.created_at.strftime("%d %b. %Y, %H:%M")%>)</p>
+						</div>
+					</div>
+				<% end %>
+				</div>	
+				<div class="coment-form">
+					<h4>답글 남기기</h4>
+
+        <%=form_tag '/comment', method: 'post' do %>
+        <input type="hidden" name="yblog_id" value=" <%=@ysingle.id%>">
+        <input type="text" name="comment">
+        <input type="submit">
+        <% end %>
+				</div>	
+				<div class="clearfix"></div>
+
+				</div>
+					
+			</div>
+					<!--//soccer-left-part-->
+		           <div class="clearfix"> </div>
+	           </div>
+			</div>
+		<!--//soccer-inner-->
+	 </div>

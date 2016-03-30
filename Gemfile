@@ -1,5 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'will_paginate', '~> 3.0.6'
+
+gem 'bootstrap-sass', '~> 3.1.1.0'
+gem 'youtube_it', '~> 2.4.0'
+
+gem 'devise'
+
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

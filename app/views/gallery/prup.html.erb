@@ -1,0 +1,15 @@
+<h1>Show us your personal life </h1>
+<%=form_tag '/ecre', method: 'post', multipart: true do %>
+<div class="main-content" style="margin-bottom:-50px">
+<div class="media response-info" style="margin-top:-50px">
+    <div class="media-left response-text-left">
+    
+    <input type="text" name="atit" placeholder="제목">
+    <textarea name="acon" placeholder="부연 설명"></textarea>
+    <%= file_field_tag 'pimage' %><br>
+    <input type="submit" value="submit">
+
+<% end %>
+    </div>
+</div>
+</div>

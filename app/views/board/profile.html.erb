@@ -1,0 +1,71 @@
+<h1>My page</h1>
+<div class="main-content" style="margin-bottom:-50px">
+<% if @profile.id == current_user.id %>
+<div class="media response-info" style="margin-top:-50px">
+    <div class="media-left response-text-left">
+<ul>
+    <li>name : <b><%=@profile.username%></b></li>
+    <li>email : <b><%=@profile.email%></b></li>
+    <li>학번 : <b><%=@profile.classid%></b></li>
+    <% if @profile.image? %>
+    <li> <img src="<%=@profile.image.url%>" class="media-object" width="200px"></li>
+    <% else %>
+    <li>사진 올릴 수 있음 (Edit로 가서)</li>
+    <% end %>
+    <br>
+    <li>Posts by <%=@profile.username%></li>
+    <% @profile.yblogs.each do |py| %>
+    <ul>
+        <%= link_to ysingle_path(py.id) do %>
+        <li><%=py.content%></li>
+        <% end %>
+    </ul>
+    <% end %>
+    <% @profile.oblogs.each do |oy| %>
+    <ul><li> <%=oy.content%></li></ul>
+    <% end %>
+    <% @profile.anncts.each do |ay| %>
+    <ul><li> <%=ay.content%></li></ul>
+    <% end %>
+</ul>
+    </div>
+</div>
+<br><br>
+<div><a href="/users/edit">Edit My Profile</a></div>
+<% else %>
+<div class="media response-info">
+    <div class="media-left response-text-left">
+<ul>
+    <li>name: <%=@profile.username%></li>
+    <li>email : <%=@profile.email%></li>
+    <li>학번 : <%=@profile.classid%></li>
+    <% if @profile.image? %>
+    <li> <img src="<%=@profile.image.url%>" class="media-object" width="200px"></li>
+    <% else %>
+    <% end %>
+    <li><%=@profile.username%>가 쓴 글들</li>
+    <% @profile.yblogs.each do |py| %>
+        <%= link_to ysingle_path(py.id) do %>
+        <div><%=py.content%></div>
+        <% end %>
+    <% end %>
+    <br>
+    
+    
+    <%=form_tag '/coment', method: 'post' do %>
+    <input type="hidden" name="pblog_id" value=" <%=current_user.id%>">
+    <textarea name="pcon" placeholder="<%=@profile.username%>에 대한 한줄평"></textarea>
+    <input type="submit">
+    <% end %>
+        <div>
+        <div>
+
+
+
+
+</ul>
+    </div>
+</div>
+
+<% end %>
+</div>

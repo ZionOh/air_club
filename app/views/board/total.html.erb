@@ -1,0 +1,36 @@
+<h1>전체 게시판 보기</h1>
+<ul>
+    <% @yblogs.each do |y| %>
+    <li>
+        <%=y.content%>
+            <ol>
+                <% y.comments.each do |cy| %>
+                    <li><%=cy.msg%></li>
+                <% end %>
+            </ol>
+    </li>
+    <% end %>
+    <% @oblogs.each do |ob| %>
+    <li>
+        <%=ob.content%>
+            <ol>
+                <% ob.comments.each do |co| %>
+                    <li><%=co.msg%></li>
+                <% end %>
+            </ol>
+    </li>
+    <% end %>
+    <% @ablogs.each do |ab| %>
+    <li>
+        <%=ab.content%>
+            <ol>
+                <% ab.comments.each do |ca| %>
+                    <li><%=ca.msg%></li>
+                <% end %>
+            </ol>
+    </li>
+    <% end %>
+
+
+</ul>
+    

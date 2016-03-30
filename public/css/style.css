@@ -4,8 +4,9 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
 html, body{
-	font-family: 'Roboto-Regular';
+	font-family: 'Roboto-Regular', 'Noto Sans KR', sans-serif;
 	font-size: 100%;
 	background: url(../images/bs.jpg)repeat 0px 0px;
 
@@ -957,11 +958,18 @@ p#demo {
     -ms-background-size: cover;
     min-height: 536px;
 }
-a.news {
+/* a.news {
     color:#ffcc00;
     font-size: 1.6em;
 }
 a.news:hover{
+  color:#F38329;
+} */
+p.news {
+    color:#ffcc00;
+    font-size: 1.6em;
+}
+p.news:hover{
   color:#F38329;
 }
 .blog-info {
